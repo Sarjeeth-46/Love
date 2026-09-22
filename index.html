@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You 🖤</title>
+    <meta name="description" content="A silent love letter turned into an interactive cinematic story.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Particle Canvas -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Persistent Small Glowing Black Heart (Focal Element) -->
+    <div id="heartContainer" class="heart-container">
+        <div id="smallHeart" class="small-black-heart">🖤</div>
+        <div class="heart-aura"></div>
+    </div>
+
+    <!-- Optional Subtle Soundscape Control -->
+    <button id="audioToggle" class="audio-toggle" aria-label="Toggle Atmosphere">
+        <span class="audio-icon">✨</span>
+        <span class="audio-text">Music</span>
+    </button>
+
+    <!-- FULL SCREEN MULTI-PAGE STORY CONTAINER -->
+    <main id="app" class="app-container">
+
+        <!-- PAGE 1: START -->
+        <section id="page-1" class="page active">
+            <div class="page-content text-center">
+                <p class="story-line p1-line-1">Hey...</p>
+                <div class="heart-spacer"></div>
+                <p class="story-line p1-line-2">Can I steal a minute?</p>
+                
+                <div class="action-group p1-line-3">
+                    <button class="btn btn-glass" onclick="nextPage(2)">
+                        <span>Okay 🖤</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: A LITTLE QUESTION -->
+        <section id="page-2" class="page">
+            <div class="page-content text-center">
+                <p class="story-subline">Before anything...</p>
+                <h2 class="question-title">Can I ask you something?</h2>
+                
+                <div class="options-container vertical">
+                    <button class="btn btn-glass btn-option" onclick="nextPage(3)">
+                        <span>Yes, ask me 🖤</span>
+                    </button>
+                    <button class="btn btn-glass btn-option" onclick="nextPage(3)">
+                        <span>I'm listening 🌙</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: WHAT DO YOU THINK? -->
+        <section id="page-3" class="page">
+            <div class="page-content text-center">
+                <h2 class="question-title">What do you think I'm trying to say?</h2>
+
+                <div class="options-container vertical">
+                    <button class="btn btn-glass btn-option" onclick="nextPage(4)">
+                        <span>"You miss me?" 🖤</span>
+                    </button>
+                    <button class="btn btn-glass btn-option" onclick="nextPage(4)">
+                        <span>"You want to talk?" 🌙</span>
+                    </button>
+                    <button class="btn btn-glass btn-option" onclick="nextPage(4)">
+                        <span>"Something else?" ✨</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: THE REVEAL -->
+        <section id="page-4" class="page">
+            <div class="page-content text-center">
+                <div class="reveal-sequence">
+                    <p class="story-line p4-line-1">Maybe...</p>
+                    <p class="story-line p4-line-2">You're right.</p>
+                    <h2 class="romantic-highlight p4-line-3">I miss you. 🖤</h2>
+                    <p class="story-subline p4-line-4">A little more than I want to admit.</p>
+                </div>
+
+                <div class="action-group p4-line-5">
+                    <button class="btn btn-glass" onclick="nextPage(5)">
+                        <span>Continue 🖤</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 5: CHOOSE ONE -->
+        <section id="page-5" class="page">
+            <div class="page-content text-center">
+                <h2 class="question-title">If I could have one thing right now...</h2>
+
+                <div class="options-container vertical">
+                    <button class="btn btn-glass btn-option" onclick="nextPage(6)">
+                        <span>🖤 &nbsp; One conversation</span>
+                    </button>
+                    <button class="btn btn-glass btn-option" onclick="nextPage(6)">
+                        <span>🌙 &nbsp; One smile</span>
+                    </button>
+                    <button class="btn btn-glass btn-option" onclick="nextPage(6)">
+                        <span>✨ &nbsp; One moment with you</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 6: SIMPLE -->
+        <section id="page-6" class="page">
+            <div class="page-content text-center">
+                <div class="reveal-sequence">
+                    <p class="seq-line p6-line-1">I don't need a perfect moment.</p>
+                    <p class="seq-line p6-line-2">I don't need perfect words.</p>
+                    <p class="seq-line p6-line-3">I just want...</p>
+
+                    <h1 class="climax-heading p6-line-4">US. 🖤</h1>
+                    <p class="story-subline p6-line-5">Whenever you're ready.</p>
+                </div>
+
+                <div class="action-group p6-line-6">
+                    <button class="btn btn-glass" onclick="nextPage(7)">
+                        <span>One last thing →</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 7: FINAL MESSAGE -->
+        <section id="page-7" class="page">
+            <div class="page-content text-center">
+                <div class="reveal-sequence">
+                    <p class="seq-line p7-line-1">No matter how many days pass...</p>
+                    <p class="seq-line p7-line-2">No matter how quiet it gets...</p>
+                    <h2 class="romantic-highlight p7-line-3">You'll always mean something to me.</h2>
+                </div>
+
+                <div class="action-group p7-line-4">
+                    <button class="btn btn-glass" onclick="nextPage(8)">
+                        <span>Open the final page 🖤</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 8: FINAL PAGE — LOVE -->
+        <section id="page-8" class="page final-page">
+            <div class="page-content text-center">
+                <div class="final-climax-sequence">
+                    <h2 class="final-text p8-line-1">LOVE YOU</h2>
+                    <h2 class="final-text p8-line-2">EVER AND EVER</h2>
+                    <h1 class="forever-title p8-line-3">FOREVER 🖤</h1>
+                    <p class="final-always p8-line-4">— always.</p>
+
+                    <div class="action-group final-redirect-action p8-line-5">
+                        <button id="talkBtn" class="btn btn-glass btn-talk" onclick="redirectToChat()">
+                            <span>Talk to me 🖤</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
